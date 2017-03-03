@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style type="text/css">
+
+			body{
+				background-color: #222;
+			}
+
+			.detail-row{
+				display: none;
+				background-color: #D3D3D3;
+			}
+
+			.detail-row > td{
+				padding: 3px 3px 3px 8px !important;
+			}
+
+			tr.order-row{
+				cursor: pointer;
+			}
+
+			.table-striped>tbody>tr:nth-of-type(odd) {
+			    background-color: #222;
+			}
+
+			.table-striped>tbody>tr:nth-of-type(even) {
+			    background-color: #333;
+			}
+
+			table#history-table tbody{
+				border-collapse: collapse;
+			}
+
+			#history-table > tbody td{
+				border: none;
+			}
+
+			#history-table tbody{
+				font-family: Tahoma,Verdana,Segoe,sans-serif;
+				font-weight: 400;
+				color: #f79a23;
+			}
+
+			#history-table > tbody td{
+				padding-top: 7px;
+				padding-bottom: 7px;
+			}
+
+			#history-table thead{
+				border: 1px;
+				border-color: #333;
+				background-color: #555;
+
+				color: #fff;
+			}
+
+			.order-row>td:nth-child(3){
+				color: white;
+			}
+
+
+			
+		</style>
+	</head>
+	<body>
+
+	<div id="history-table-wrap" class="container">
+		<h3 style="font-family: Tahoma,Verdana,Segoe,sans-serif; color: #eee;">History Orders of {{username}}</h3>
+		<table class="table table-striped" id="history-table">
+			<thead>
+				<tr>
+					<td>Time</td>
+					<td>Sold Quantity</td>
+					<td>PnL</td>
+					<td>Status</td>
+					{# <td>Logs</td> #}
+				</tr>
+			</thead>
+			<tbody>
+			{% for order in json_orders %}
+				<tr class="order-row">
+					<td class='time'>2016.Dec.02</td>
+			        <td class='Total Sold quantity'>{{ order.total_sold_quantity }}</td>
+			        <td class='pnl'>{{ order.pnl }}</td>
+			        <td class='status'>{{ order.status }}</td>
+			    </tr>
+
+			    {% if order.trading_logs %}
+					    <tr class="detail-header detail-row"><td>Sold Quantity</td><td>Sold Price</td><td>Timestamp</td><td>Message Type</td></tr>
+					    {% for log in order.trading_logs %}
+					    	<tr class="detail-body detail-row">
+					    		<td> {{ log.sold_quantity }} </td>
+					    		<td> {{ log.sold_price }} </td>
+					    		<td> {{ log.timestamp }} </td>
+					    		<td> {{ log.message_type }} </td>
+					    	</tr>
+						{% endfor %}
+
+				{% endif %}
+
+		    {% endfor %}
+
+		    </tbody>
+	    </table>
+	</div>
+		
+
+	</body>
+
+	<script type="text/javascript">
+		// [{"model": "users.orderhistory", "pk": 17, 
+	    //            "fields": {"original_quantity": 1000, "initial_time": 182319201,
+		//		                 "order_size": 200, "order_discount": 5.0, "trading_logs": null, 
+		//                       "remaining_quantity": 1000, "pnl": 0.0, "status": "In_Progress", 
+		//                       "user": 1}}]
+
+		// implement an on click listener for the table and check if the clicked row is 
+		// a common row and show all the rows in between this common row and next common row.
+		
+
+		document.getElementById("history-table").addEventListener("click", function tableRowDelegate(e){
+
+			console.log('table row delegate clicked...');
+
+			// the row that we want to expand detail
+			let rowToShowDetail = e.target;
+			console.log(rowToShowDetail.parentNode)
+			while ( rowToShowDetail.tagName !== "TR") { 
+				if ( rowToShowDetail === null ) return;
+				rowToShowDetail = rowToShowDetail.parentNode;
+			}
+
+			// if it is a detail row, we don't do anything
+			if ( rowToShowDetail.classList.contains("detail-row") ) return;
+
+			let nextRow = rowToShowDetail.nextElementSibling;
+
+			// return if there is not detail to show for this element
+			if ( !nextRow.classList.contains("detail-row") ) return; 
+
+			// since there are detail to show, we want to know whether they are already hidden or not
+			let targetStyle = (nextRow.style.display !== "table-row")?"table-row":"none";
+
+			// find all the rows below that are not of the class common rows
+			while( nextRow.classList.contains("detail-row") ) {
+				nextRow.style.display = targetStyle;
+				nextRow = nextRow.nextElementSibling;
+				if (nextRow === null) return;
+			}
+
+		});
+
+	</script>
+	
+</html>

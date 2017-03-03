@@ -1,0 +1,236 @@
+
+iframe{
+  border: 0;
+}
+
+.left-col{
+  float: left;
+  width: 20%;
+  max-width: 430px;
+}
+
+
+#input-error-message{
+  color: red;
+}
+
+.right-col{
+  float: left;
+  width: 80%;
+  height: 400px;
+}
+
+div.order-wrap{
+  margin-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-style: solid;
+  /*border-color: #e5e5e5;*/
+  border-color: #666;
+  border-width: 1px;
+
+}
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.x.axis line {
+  shape-rendering: auto;
+}
+
+path.domain{
+  /*stroke-width: 1.5px;*/
+  fill: none;
+  shape-rendering: crispEdges;
+}
+
+
+#realtime-log{
+  margin-top: 20px;
+  margin-left: 65px;
+  height: 100px;
+  overflow: scroll;
+}
+
+.instrument_ids{
+  margin-left: 78px;
+}
+
+.trade-detail{
+  /*display: none;*/
+}
+
+.trade-detail:hover{
+  cursor: pointer;
+}
+
+.collapse-row:hover{
+  cursor: pointer;
+}
+
+.trade-detail:last-of-type{
+  display: table-row;
+}
+
+img[src$='more.png']{
+  height: 24px;
+}
+
+
+div.delta-box{
+  display: inline-block;
+  float: right;
+  margin-top: 5px;
+}
+
+div.pos-delta{
+  color: green;
+}
+
+div.neg-delta{
+  color: red;
+}
+
+div.neg-delta:before{
+  content: "(";
+}
+div.neg-delta:after{
+  content: ")";
+}
+
+.btn-primary{
+  background-color: #003dd7;
+  border-color: #003dd7;
+}
+
+#make-order-btn{
+  float: right;
+  margin-right: 79px;
+  margin-top: 10px;
+}
+
+.custermize-button{
+  margin-left: 10px;
+}
+
+.order-table{
+  margin-top: 7px;
+}
+
+.order-table > thead{
+  background-color: #555;
+  color: #fff;
+}
+
+.order-table td{
+  width: 33%;
+  text-align: right;
+}
+
+.order-table > tbody > tr{
+  color: #f79a23;
+}
+
+.order-table > tbody > tr > td{
+  /*color: #f79a23;*/
+  border-color: #333;
+}
+
+.order-table > tbody > tr > td:nth-child(3){
+  color: white;
+}
+
+.custom-start{
+  background-color: rgba(0, 61, 215, 0.3);
+}
+
+
+/* High Charts */
+#chartContainer{
+  height: 286px;
+}
+
+#chartContainer2{
+  height: 100px;
+}
+
+#make-order-layout label{
+  font-family: Tahoma,Verdana,Segoe,sans-serif;
+  font-weight: 400; 
+  color: white;
+}
+
+
+/* Golden Layout Design */
+#make-order-layout{
+  padding-left: 34px;
+  margin-top: 30px;
+}
+
+
+
+/* Layout new Design overwriting Bootstrap */
+.form-control{
+  width: 86%;
+  background-color: #222222;
+  border: 1px solid #666666;
+  border-radius: 0;
+}
+
+.form-group > label {
+  width: 215px;
+}
+
+.form-group > input{
+  display: inline-block;
+  width: 57%;
+  text-align: right;
+  color: #fff;
+}
+
+.form-group > input::-webkit-input-placeholder{
+  color: #666666;
+}
+
+.form-group{
+  margin-bottom: 8px;
+}
+
+.navbar{
+  margin-bottom: 0px;
+  min-height: 44px;
+}
+
+.navbar-brand{
+  height: 40px;
+}
+
+.navbar-text{
+  margin-top: 13px;
+  margin-bottom: 11px;
+}
+
+.navbar-nav > li > a{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.btn-danger{
+  background-color: hsl(36, 100%, 40%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffad32", endColorstr="#cc7a00");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffad32), to(#cc7a00));
+  background-image: -moz-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: -ms-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffad32), color-stop(100%, #cc7a00));
+  background-image: -webkit-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: -o-linear-gradient(top, #ffad32, #cc7a00);
+  background-image: linear-gradient(#ffad32, #cc7a00);
+  border-color: #cc7a00 #cc7a00 hsl(36, 100%, 35%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
